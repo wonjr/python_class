@@ -168,7 +168,6 @@ for i in range(1, len(a)):
 print(a)
 print(big)
 """
-
 """
 x = int(input())
 a = []
@@ -185,11 +184,11 @@ for i in range(1, 101):
     a.append(i)
 low = a[0]
 high = a[99]
-cnt = 0
-while low < high:
+cnt = 1
+while low <= high:
     mid = (low + high)//2
     if b == mid:
-        print(a[b-1], cnt)
+        print("{}를 찾는데 {}번 탐색하였습니다.".format(a[b-1], cnt))
         break
     elif b < mid:
         high = mid - 1
@@ -198,4 +197,18 @@ while low < high:
         low = mid + 1
         cnt += 1
 
+"""
+a = [1, 2, 3, 4]
+b = []
+for i in range(len(a)):
+    if i == 1:
+        continue
+    b.append(a[i])
+"""
+"""
+#슬라이싱
+a = [1, 2, 3, 4, 5, 6, 7]
+
+print(a[2:5])
+"""
 
