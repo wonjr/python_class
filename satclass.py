@@ -179,6 +179,9 @@ for i in range(len(a)):
 """
 """
 import random
+a =[]
+a.append(3)
+import random
 b = random.randrange(1, 100)
 print(b)
 
@@ -191,9 +194,22 @@ print(a)
 """
 import random
 a = []
+c = 1
+while c < 7:
+    b = random.randrange(1, 46)
+    if b in a:
+        continue
+    else:
+        a.append(b)
+    c += 1
+print(a)
+"""
+"""
+import random
+a = []
 
 for i in range(10):
-    b = random.randrange(1, 100)
+    b = random.randrange(1, 101)
     a.append(b)
 big = a[0]
 
@@ -202,6 +218,18 @@ for i in range(1, len(a)):
         big = a[i]
 print(a)
 print(big)
+"""
+"""
+import random
+a = []
+c = 0
+while True:
+    b = random.randrange(1, 101)
+    a.append(b)
+    if a[c] == 100:
+        break
+    c += 1
+print(a)
 """
 """
 x = int(input())
@@ -303,7 +331,6 @@ else:
     print("same")
 """
 
-
 """
 #튜플
 a = (1,2,3)
@@ -320,12 +347,13 @@ print(a[0][2])
 """
 a = dict()
 
-a = {'kkk': 170, 'age':100, 'value': 200, 'height' : 180, 'height': 190}
-print(a['kkk'])
+a = {'abc': 170, 'age': 100, 'value': 200, 'height': 180, 'height': 190}
+print(a['abc'])
 print(a.keys())
 print(a.values())
 print(a['height'])
 """
+
 """
 def add_test(x, y):
     #print(x + y)
@@ -361,7 +389,7 @@ test_hi(3,5)
 dan = int(input())
 for i in range(1,10):
     print("{}*{}={}".format(dan,i,dan*i))
-
+    
 def gugu(x):
     for i in range(1,10):
         print("{}*{}={}".format(x, i, x*i))
@@ -389,6 +417,7 @@ a = int(input())
 b = int(input())
 gcd(a,b)
 """
+
 """
 #5 n을 입력받으면 끝자리가 n의 배수인 애들만 *출력
 def star(x,y):
@@ -498,7 +527,19 @@ def fact1(a):
 a = int(input())
 fact1(a)
 """
+"""
+def seven(n):
+    a = n % 7
+    if a > 3:
+        ans = n - a + 7
+    else:
+        ans = n - a
+    return ans
 
+
+n = int(input())
+print(seven(n))
+"""
 """
 #09.19
 클래스 - 붕어빵 틀
@@ -590,8 +631,89 @@ while True:
 절대경로 - /home 위에서 부터 내려옴
 상대경로 - ./(내 현재 위치에서) ../(현재위치에서 더 상위폴더)
 """
-
+"""
 f = open("/Users/cho/Desktop/test_new.txt",'r')
 temp = f.readlines()
 
 print(temp)
+"""
+#9.26
+"""
+def plus():
+    a = int(input())
+    b = int(input())
+    return a + b
+
+def minus():
+    a = int(input())
+    b = int(input())
+    return a - b
+
+def mul(x, y):
+    return x * y
+
+
+print(mul(plus(), minus()))
+"""
+"""
+a = int(input())
+b = int(input())
+temp = a
+a = b
+b = temp
+print(a,b)
+"""
+
+f = open("test.txt","r")
+lines = f.readlines()
+"""
+for line in lines:
+    print(line)
+"""
+"""
+for line in lines:
+    print(line.split('\n')[0])
+"""
+"""
+a = "hihihikbyebye"
+b = a.split('k')
+print(b)
+"""
+"""
+id = input("id:")
+pwd = input("pwd:")
+for line in lines:
+    server_id = line.split(',')[0]
+    server_pwd = line.split(',')[1].split('\n')[0]
+    if id == server_id and pwd == server_pwd:
+        print("로그인 완료")
+        exit()
+print("다시")
+"""
+"""
+id = input("id:")
+pwd = input("pwd:")
+flag = 0
+for line in lines:
+    server_id = line.split(',')[0]
+    server_pwd = line.split(',')[1].split('\n')[0]
+    if id == server_id and pwd == server_pwd:
+        print("로그인 완료")
+        flag=1
+        break
+if flag==0:
+    print("다시")
+
+"""
+f = open("test.txt","a")
+fr = open("test.txt","r")
+id = input("아이디를 입력하세요:")
+pwd = input("비밀번호를 입력하세요:")
+for line in lines:
+    server_id = line.split(',')[0]
+    server_pwd = line.split(',')[1].split('\n')[0]
+    if id == server_id:
+        print("이미 가입되어 있습니다.")
+        exit()
+f.write(id + ',' + pwd + '\n')
+print("가입완료")
