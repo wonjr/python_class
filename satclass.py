@@ -236,7 +236,7 @@ x = int(input())
 a = []
 while x != 0:
     a.append(x % 2)
-    x //= 2
+    x //= 2 
 for i in range(len(a)-1, -1, -1):
     print(a[i], end=" ")
 """
@@ -246,7 +246,7 @@ a = []
 for i in range(1, 101):
     a.append(i)
 low = a[0]
-high = a[99]
+high = a[99] 
 cnt = 1
 while low <= high:
     mid = (low + high)//2
@@ -291,7 +291,7 @@ for i in range(100):
 if i > 50:
     print("not find value")
 else:
-    print("find",i)
+     print("find",i)
 """
 """
 a = input()
@@ -332,7 +332,7 @@ else:
 """
 
 """
-#튜플
+#튜플 
 a = (1,2,3)
 
 #한번 값을 할당하면 바꿀 수 없다. list와 비슷하지만 메모리 측면에서 더 효율적으로 사용할 수도 있다.
@@ -437,7 +437,7 @@ b = int(input())
 star(a, b)
 """
 
-#12일 수업---------------------------------------------
+# 12일 수업---------------------------------------------
 """
 def gcd(x, y):
     for i in range(1, x+1):
@@ -451,14 +451,14 @@ if gcd(x, y)==1:
     print("서로소")
 else:
     print("최대공약수는 {}".format(gcd(x, y)))
-    """
+"""
 """
 #서로소 판별하기
 def gcd2(x, y):
     for i in range(1, x+1):
         if x % i == 0 and y % i == 0:
             num = i
-    if num == 1:
+    if  num == 1:
         print("서로소")
     else:
         print("최대공약수는 {}".format(num))
@@ -551,8 +551,8 @@ print(seven(n))
 5. 스킬 만들어보기
 """
 """
-import random
-
+import random  
+ 
 class makeCharacter:
 
     def __init__(self,id):
@@ -582,16 +582,16 @@ while True:
     select_skill = int(input("1.attack 2.skill"))
     if select_skill == 1:
         a = mc.attack()
-        ogar.attacked(a)
+        ogar.a ttacked(a)
         if ogar.hp <= 0:
-            print("{} 사망".format(ogar.name))
+            print("{} 사망".format(og ar.name))
             break
         else:
             print("{}가 {}를 {}의 공격력으로 공격했다.\n{}의 hp:{}\n{}의 hp:{}"
               .format(mc.name, ogar.name, a, mc.name, mc.hp, ogar.name, ogar.hp))
     elif select_skill == 2:
         if mc.mp > 0:
-            a = mc.skill()
+            a = m c.skill()
             ogar.attacked(a)
             if ogar.hp <= 0:
                 print("{} 사망".format(ogar.name))
@@ -619,7 +619,7 @@ while True:
             if mc.hp <= 0:
                 print("{} 사망".format(mc.name))
                 break
-            else:
+            else: 
                 print("{}가 {}를 스킬로 공격했다.\n{}의 hp:{} mp:{}\n{}의 hp:{}"
                       .format(ogar.name, mc.name, ogar.name, ogar.hp, ogar.mp, mc.name, mc.hp))
         else:
@@ -637,7 +637,7 @@ temp = f.readlines()
 
 print(temp)
 """
-#9.26
+# 9.26
 """
 def plus():
     a = int(input())
@@ -663,9 +663,6 @@ a = b
 b = temp
 print(a,b)
 """
-
-f = open("test.txt","r")
-lines = f.readlines()
 """
 for line in lines:
     print(line)
@@ -680,6 +677,8 @@ b = a.split('k')
 print(b)
 """
 """
+f = open("test.txt", "r")
+lines = f.readlines()
 id = input("id:")
 pwd = input("pwd:")
 for line in lines:
@@ -691,6 +690,8 @@ for line in lines:
 print("다시")
 """
 """
+f = open("test.txt", "r")
+lines = f.readlines()
 id = input("id:")
 pwd = input("pwd:")
 flag = 0
@@ -703,7 +704,7 @@ for line in lines:
         break
 if flag==0:
     print("다시")
-
+"""
 """
 f = open("test.txt","a")
 fr = open("test.txt","r")
@@ -717,3 +718,769 @@ for line in lines:
         exit()
 f.write(id + ',' + pwd + '\n')
 print("가입완료")
+"""
+"""
+# 0 1 2
+# 3 4 5
+# 6 7 8
+import random
+def make_board():
+    a = []
+    for i in range(9):
+        a.append("-")
+    return a
+board = make_board()
+def see_board():
+    for j in range(0,4,3):
+        print(board[j]+"|"+board[j+1]+"|"+board[j+2])
+        print("-----")
+    print(board[6] + "|" + board[7] + "|" + board[8]+"\n")
+
+x_or_o = input("x or o:")
+if x_or_o == 'x':
+    p1 = 'x'
+    p2 = 'o'
+else:
+    p1 = 'o'
+    p2 = 'x'
+def set_p1():
+    p1_choice = int(input("choice number 0~8:"))
+    if board[p1_choice] == '-':
+        board[p1_choice] = p1
+    else:
+        print("you can't. Choice other number:")
+        set_p1()
+    see_board()
+def set_p2():
+    p2_choice = random.randrange(0, 9)
+    if board[p2_choice] == '-':
+        board[p2_choice] = p2
+    else:
+        set_p2()
+    see_board()
+    
+if p1 == 'x':
+    set_p1()
+    set_p2()
+else:
+    set_p2()
+    set_p1()
+"""
+"""
+f = open("test.txt","r")
+import random
+
+def make_board():
+    b = []
+    for i in range(9):
+        b.append('-')
+    return b
+
+def show_board():
+    for j in range(0, 7, 3):
+        print(board[j] + '|' + board[j + 1] + '|' + board[j + 2])
+    print('-----')
+
+
+def set_p1():
+    choice = int(input("choice number 0~8:"))
+    if board[choice] == '-':
+        board[choice] = p1
+    else:
+        print("you can't. Choice other number:")
+        set_p1()
+
+def set_p2():
+    m = random.randrange(0, 9)
+    if board[m] == '-':
+        board[m] = p2
+    else:
+        set_p2()
+
+def check_win(p):
+    if board[0] == board[1] and board[1] == board[2] and board[0] == p:
+        return True
+    elif board[3] == board[4] and board[4] == board[5] and board[3] == p:
+        return True
+    elif board[6] == board[7] and board[7] == board[8] and board[6] == p:
+        return True
+    elif board[0] == board[3] and board[3] == board[6] and board[0] == p:
+        return True
+    elif board[1] == board[4] and board[4] == board[7] and board[1] == p:
+        return True
+    elif board[2] == board[5] and board[5] == board[8] and board[2] == p:
+        return True
+    elif board[0] == board[4] and board[4] == board[8] and board[0] == p:
+        return True
+    elif board[2] == board[4] and board[4] == board[6] and board[2] == p:
+        return True
+
+def check_draw():
+    for i in board:
+        if i != '-':
+            continue
+        else:
+            return
+    print("무승부")
+    exit()
+    
+board = make_board()
+
+x_or_o = input('x or o:').lower()
+if x_or_o == 'x':
+    p1 = 'x'
+    p2 = 'O'
+    turn = 0
+else:
+    p1 = 'O'
+    p2 = 'X'
+    turn = 1
+
+for i in range(5):
+    if turn == 0:
+        print("player turn")
+        set_p1()
+        show_board()
+        check = check_win(p1)
+        if check:
+            print("player win")
+            break
+        check_draw()
+        turn = 1
+    if turn == 1:
+        print("com turn")
+        set_p2()
+        show_board()
+        check = check_win(p2)
+        if check:
+            print("com win")
+            break
+        check_draw()
+        turn = 0
+
+# 추가 -> 로그인 & 회원가입
+
+# type
+# < ~ !=
+# and, or
+# for, while
+# list => for i in list & for i in range(len(list)
+"""
+"""
+from random import randrange
+f = open("test.txt","a")
+fr = open("test.txt","r")
+lines = fr.readlines()
+print(lines)
+def login():
+    id = input("id:")
+    pwd = input("pwd:")
+    for line in lines:
+        server_id = line.split(',')[0]
+        server_pwd = line.split(',')[1].split('\n')[0]
+        if id == server_id and pwd == server_pwd:
+            print("로그인 완료")
+            return
+    print("다시 로그인")
+    login()
+
+def m_id():
+    id = input("아이디를 입력하세요:")
+    pwd = input("비밀번호를 입력하세요:")
+    for line in lines:
+        server_id = line.split(',')[0]
+        server_pwd = line.split(',')[1].split('\n')[0]
+        if id == server_id:
+            print("이미 가입되어 있습니다.")
+            m_id()
+            return
+    f.write(id + ',' + pwd + '\n')
+    print("가입완료")
+
+
+def menu():
+    choice = int(input("1.make id 2.login"))
+    if choice == 1:
+        m_id()
+    elif choice == 2:
+        login()
+
+def m_board():
+    a = []
+    for i in range(9):
+        a.append(' ')
+    return a
+
+board = m_board()
+
+def p_board():
+    for i in range(0, 7, 3):
+        print(board[i] + '|' + board[i + 1] + '|' + board[i + 2])
+    print()
+
+menu()
+
+print("game start!")
+x_o = input("x or o").lower()
+if x_o == 'x':
+    p1 = 'x'
+    p2 = 'o'
+    turn = 0
+else:
+    p1 = 'o'
+    p2 = 'x'
+    turn = 1
+
+def set_p1():
+    p1_num = int(input("input 1~9:"))
+    if board[p1_num - 1] == ' ':
+        board[p1_num - 1] = p1
+    else:
+        print("put again")
+        set_p1()
+
+def set_p2():
+    p2_num = randrange(1, 10)
+    if board[p2_num - 1] == ' ':
+        board[p2_num - 1] = p2
+    else:
+        set_p2()
+
+def win():
+    if board[0] == board[1] and board[1] == board[2] and board[0] != ' ':
+        return True
+    elif board[3] == board[4] and board[4] == board[5] and board[3] != ' ':
+        return True
+    elif board[6] == board[7] and board[7] == board[8] and board[6] != ' ':
+        return True
+    elif board[0] == board[3] and board[3] == board[6] and board[0] != ' ':
+        return True
+    elif board[1] == board[4] and board[4] == board[7] and board[1] != ' ':
+        return True
+    elif board[2] == board[5] and board[5] == board[8] and board[2] != ' ':
+        return True
+    elif board[0] == board[4] and board[4] == board[8] and board[0] != ' ':
+        return True
+    elif board[2] == board[4] and board[4] == board[6] and board[2] != ' ':
+        return True
+
+def draw():
+    for i in board:
+        if i != ' ':
+            continue
+        else:
+            return
+    print("draw")
+    exit()
+
+for i in range(5):
+    if turn == 0:
+        print("player turn")
+        set_p1()
+        p_board()
+        if win():
+            print("player win")
+            break
+        draw()
+        turn = 1
+
+    if turn == 1:
+        print("com turn")
+        set_p2()
+        p_board()
+        if win():
+            print("com win")
+            break
+        draw()
+        turn = 0
+"""
+"""
+a = []
+a.append(1)
+print(a)
+del a[0]
+print(a)
+"""
+"""
+#자료구조
+#stack - FILO
+#overflow - 다찼는데 넣으려고 하는 경우
+#underflow - 아무것도 없는데 빼려고 할 경우
+#cpu ram(프로그램이 돌아감) hd
+
+def push(stack, a):
+    #overflow 확인 코드
+    #넣어주는 작업
+    return stack
+def pop(stack):
+    #underflow 확인 코드
+    #빼주는 작업
+    #del stack[0]
+    return stack
+stack = []
+max_v = 5
+while True:
+    check = int(input("1 is push, 2 is pop, 3 is exit"))
+    if check == 1:
+        push(stack, a)
+        pass
+    elif check == 2:
+        pass
+    elif check == 3:
+        break
+#pass에 코드 채워넣기
+"""
+"""
+def push(stack, a):
+    if len(stack) == max_v:
+        print("overflow")
+        return
+    else:
+        stack.append(a)
+    #overflow 확인 코드
+    #넣어주는 작업
+    return stack
+def pop(stack):
+    if len(stack) == 0:
+        print("underflow")
+        return
+    else:
+        print("{} 삭제".format(stack[len(stack)-1]))
+        del stack[len(stack)-1]
+    #underflow 확인 코드
+    #빼주는 작업 -> del stack[0]
+    return stack
+max_v = 5
+list = []
+while True:
+    check = int(input("1 is push, 2 is pop, 3 is exit"))
+
+    if check == 1:
+        a = int(input("input num"))
+        push(list, a)
+    elif check == 2:
+        pop(list)
+    elif check == 3:
+        print(list)
+        break
+#pass에 코드 채워넣기
+"""
+"""
+#버블정렬
+list = [3,5,1,2,7]
+for j in range(len(list)):
+    for i in range(len(list)-1):
+        if list[i] > list[i + 1]:
+            tmp = list[i]
+            list[i] = list[i+1]
+            list[i+1] = tmp
+            #list[i],list[i+1] = list[i+1],list[i]
+print(list)
+
+#반복문은 두번정도 쓰는게 좋다
+"""
+"""
+#pygame 설치
+
+import pygame
+pygame.init()#게임을 초기화 해주는 작업
+
+def car(carImg, x, y):
+    gameDisplay.blit(carImg, (x, y)) #이미지를 그려주는 역할 x, y좌표
+
+display_width = 800 #display 너비선언
+display_height = 800 #display 높이선언
+
+gameDisplay = pygame.display.set_mode((display_width, display_height)) #display 설정
+pygame.display.set_caption('race') #제목
+
+black = (0, 0, 0)
+white = (255, 255, 255)
+
+clock = pygame.time.Clock()
+crashed = False 
+carImg = pygame.image.load("racecar.png") #자동차 이미지 경로
+
+x = (display_width * 0.45)
+y = (display_height * 0.8)
+
+while not crashed:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT: #게임을 나가기
+            crashed = True
+    gameDisplay.fill(white) #배경 색
+    car(carImg, x, y) #car 이미지를 x, y좌표에 그리기
+    pygame.display.update() #바뀐
+    clock.tick(60)
+
+"""
+"""
+#pygame 설치
+import pygame
+
+pygame.init()#게임을 초기화 해주는 작업
+
+def car(carImg, x, y):
+    gameDisplay.blit(carImg, (x, y)) #이미지를 그려주는 역할 x, y좌표
+
+display_width = 800 #display 너비선언
+display_height = 800 #display 높이선언
+
+gameDisplay = pygame.display.set_mode((display_width, display_height)) #display 설정
+pygame.display.set_caption('race') #제목
+
+black = (0, 0, 0)
+white = (255, 255, 255)
+
+clock = pygame.time.Clock()
+crashed = False
+carImg = pygame.image.load("racecar.png") #자동차 이미지 경로
+
+x = (display_width * 0.45)
+y = (display_height * 0.8)
+x_change = 0
+car_speed = 0
+
+while not crashed:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT: #게임을 나가기
+            crashed = True
+        if event.type == pygame.KEYDOWN: #키를 눌렀을 때
+            if event.key == pygame.K_LEFT:
+                x_change = -5
+            elif event.key == pygame.K_RIGHT:
+                x_change = 5
+                
+        #위 아래 추가하기
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                x_change = 0
+    x += x_change
+    gameDisplay.fill(white) #배경 색
+    car(carImg, x, y) #car 이미지를 x, y좌표에 그리기
+
+    pygame.display.update() #이미지 업데이트
+    clock.tick(60)
+
+"""
+"""
+#pygame 설치
+import pygame
+
+pygame.init()#게임을 초기화 해주는 작업
+
+def car(carImg, x, y):
+    gameDisplay.blit(carImg, (x, y)) #이미지를 그려주는 역할 x, y좌표
+
+display_width = 800 #display 너비선언
+display_height = 800 #display 높이선언
+
+gameDisplay = pygame.display.set_mode((display_width, display_height)) #display 설정
+pygame.display.set_caption('race') #제목
+
+black = (0, 0, 0)
+white = (255, 255, 255)
+
+clock = pygame.time.Clock()
+crashed = False
+carImg = pygame.image.load("racecar.png") #자동차 이미지 경로
+
+x = (display_width * 0.45)
+y = (display_height * 0.8)
+x_change = 0
+y_change = 0
+car_speed = 0
+
+while not crashed:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT: #게임을 나가기
+            crashed = True
+        if event.type == pygame.KEYDOWN: #키를 눌렀을 때
+            if event.key == pygame.K_LEFT:
+                x_change = -5
+            elif event.key == pygame.K_RIGHT:
+                x_change = 5
+            elif event.key == pygame.K_UP:
+                y_change = -5
+            elif event.key == pygame.K_DOWN:
+                y_change = 5
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT or event.key == pygame.K_DOWN or event.key == pygame.K_UP:
+                x_change = 0
+                y_change = 0
+    x += x_change
+    y += y_change
+    gameDisplay.fill(white) #배경 색
+    car(carImg, x, y) #car 이미지를 x, y좌표에 그리기
+
+    pygame.display.update() #이미지 업데이트
+    clock.tick(60)
+"""
+"""
+#queue
+
+def enqueue(queue, a):
+    return queue
+
+def dequeue(queue):
+    return queue
+
+queue = []
+max_v = 5
+while True:
+    a = int(input("1 is enqueue, 2 is dequeue, 3 is out :"))
+    if a == 1:
+        a = int(input("input num"))
+        enqueue(queue, a)
+    elif a == 2:
+        dequeue(queue)
+    else:
+        print("out")
+        break
+
+"""
+"""
+# queue
+def enqueue(queue, a):
+    if len(queue) == max_v:
+        print("overflow")
+        return
+    else:
+        queue.append(a)
+    return queue
+
+def dequeue(queue):
+    if len(queue) == 0:
+        print("underflow")
+        return
+    else:
+        print("{} is delete".format(queue[0]))
+        del queue[0]
+    return queue
+
+queue = []
+max_v = 5
+while True:
+    a = int(input("1 is enqueue, 2 is dequeue, 3 is out :"))
+
+    if a == 1:
+        a = int(input("input num"))
+        enqueue(queue, a)
+    elif a == 2:
+        dequeue(queue)
+    else:
+        print(queue)
+        print("out")
+        break
+
+queue = [1,2,3,4,5]
+print(a[0])
+
+"""
+"""
+#선택정렬
+#1. 가장 작은 수 출력
+import random
+a = []
+
+for i in range(10):
+    a.append(random.randrange(1, 200))
+mini = 0
+for i in range(1, len(a)):
+    if a[mini] > a[i]:
+        mini = i
+print(a)
+print(mini, a[mini])
+"""
+"""
+import random
+a = []
+for i in range(10):
+    a.append(random.randrange(1, 200))
+a = []
+for i in range(len(a)-1):
+    mini = i
+    for j in range(i+1, len(a)):
+        if a[j] < a[mini]:
+            mini = j
+    tmp = a[i]
+    a[i] = a[mini]
+    a[mini] = tmp
+    #a[i], a[mini] = a[mini], a[i]
+    print(a)
+"""
+"""
+#pygame 설치
+import pygame
+
+pygame.init()#게임을 초기화 해주는 작업
+
+def car(carImg, x, y):
+    gameDisplay.blit(carImg, (x, y)) #이미지를 그려주는 역할 x, y좌표
+
+display_width = 800 #display 너비선언
+display_height = 800 #display 높이선언
+
+gameDisplay = pygame.display.set_mode((display_width, display_height)) #display 설정
+pygame.display.set_caption('race') #제목
+
+black = (0, 0, 0)
+white = (255, 255, 255)
+
+clock = pygame.time.Clock()
+carImg = pygame.image.load("racecar.png") #자동차 이미지 경로
+car_width = 79
+
+def game_loop():
+    x = (display_width * 0.45)
+    y = (display_height * 0.8)
+    x_change = 0
+    crashed = False
+    while not crashed:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT: #게임을 나가기
+                crashed = True
+            if event.type == pygame.KEYDOWN: #키를 눌렀을 때
+                if event.key == pygame.K_LEFT:
+                    x_change = -5
+                elif event.key == pygame.K_RIGHT:
+                    x_change = 5
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                    x_change = 0
+        x += x_change
+        gameDisplay.fill(white) #배경 색
+        car(carImg, x, y) #car 이미지를 x, y좌표에 그리기
+
+        if x > display_width - car_width or x < 0:
+            crashed = True
+
+        pygame.display.update() #이미지 업데이트
+        clock.tick(60)
+
+game_loop()
+"""
+"""
+#pygame 설치
+import pygame
+
+pygame.init()#게임을 초기화 해주는 작업
+
+def car(carImg, x, y):
+    gameDisplay.blit(carImg, (x, y)) #이미지를 그려주는 역할 x, y좌표
+
+display_width = 800 #display 너비선언
+display_height = 800 #display 높이선언
+
+gameDisplay = pygame.display.set_mode((display_width, display_height)) #display 설정
+pygame.display.set_caption('race') #제목
+
+black = (0, 0, 0)
+white = (255, 255, 255)
+
+clock = pygame.time.Clock()
+carImg = pygame.image.load("racecar.png") #자동차 이미지 경로
+car_height = 148
+car_width = 79
+
+def game_loop():
+    x = (display_width * 0.45)
+    y = (display_height * 0.8)
+    x_change = 0
+    y_change = 0
+    crashed = False
+    while not crashed:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT: #게임을 나가기
+                crashed = True
+            if event.type == pygame.KEYDOWN: #키를 눌렀을 때
+                if event.key == pygame.K_LEFT:
+                    x_change = -5
+                elif event.key == pygame.K_RIGHT:
+                    x_change = 5
+                elif event.key == pygame.K_UP:
+                    y_change = -5
+                elif event.key == pygame.K_DOWN:
+                    y_change = 5
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT or event.key == pygame.K_DOWN or event.key == pygame.K_UP:
+                    x_change = 0
+                    y_change = 0
+        x += x_change
+        y += y_change
+        gameDisplay.fill(white) #배경 색
+        car(carImg, x, y) #car 이미지를 x, y좌표에 그리기
+
+        if (x > display_width - car_width or x < 0) or (y > display_height - car_height or y < 0):
+            crashed = True
+
+        pygame.display.update() #이미지 업데이트
+        clock.tick(60)
+
+game_loop()
+"""
+#pygame 설치
+import pygame
+
+pygame.init()#게임을 초기화 해주는 작업
+
+def car(carImg, x, y):
+    gameDisplay.blit(carImg, (x, y)) #이미지를 그려주는 역할 x, y좌표
+
+display_width = 800 #display 너비선언
+display_height = 800 #display 높이선언
+
+gameDisplay = pygame.display.set_mode((display_width, display_height)) #display 설정
+pygame.display.set_caption('race') #제목
+
+black = (0, 0, 0)
+white = (255, 255, 255)
+
+clock = pygame.time.Clock()
+carImg = pygame.image.load("racecar.png") #자동차 이미지 경로
+car_height = 148
+car_width = 79
+
+def game_loop():
+    x = (display_width * 0.45)
+    y = (display_height * 0.8)
+    x_change = 0
+    y_change = 0
+    a = 0
+    crashed = False
+    while not crashed:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT: #게임을 나가기
+                crashed = True
+            if event.type == pygame.KEYDOWN: #키를 눌렀을 때
+                if event.key == pygame.K_LEFT:
+                    x_change = -5 - a
+                    a += 3
+                elif event.key == pygame.K_RIGHT:
+                    x_change = 5 + a
+                    a += 3
+                elif event.key == pygame.K_UP:
+                    y_change = -5 - a
+                    a += 3
+                elif event.key == pygame.K_DOWN:
+                    y_change = 5 + a
+                    a += 3
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT or event.key == pygame.K_DOWN or event.key == pygame.K_UP:
+                    x_change = 0
+                    y_change = 0
+        x += x_change
+        y += y_change
+        gameDisplay.fill(white) #배경 색
+        car(carImg, x, y) #car 이미지를 x, y좌표에 그리기
+
+        if (x > display_width - car_width or x < 0) or (y > display_height - car_height or y < 0):
+            crashed = True
+
+        pygame.display.update() #이미지 업데이트
+        clock.tick(60)
+
+game_loop()
+pygame.quit()
+
+#가속도
