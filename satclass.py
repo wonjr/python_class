@@ -1275,7 +1275,6 @@ while True:
 
 queue = [1,2,3,4,5]
 print(a[0])
-
 """
 """
 #선택정렬
@@ -1285,6 +1284,7 @@ a = []
 
 for i in range(10):
     a.append(random.randrange(1, 200))
+
 mini = 0
 for i in range(1, len(a)):
     if a[mini] > a[i]:
@@ -1297,10 +1297,10 @@ import random
 a = []
 for i in range(10):
     a.append(random.randrange(1, 200))
-a = []
-for i in range(len(a)-1):
+print(a)
+for i in range(len(a)-1):#기준점
     mini = i
-    for j in range(i+1, len(a)):
+    for j in range(i+1, len(a)):#최소값
         if a[j] < a[mini]:
             mini = j
     tmp = a[i]
@@ -1419,13 +1419,106 @@ def game_loop():
 
 game_loop()
 """
+
+"""
+#데이터 타입
+# int, float, str, bool, list, dict
+
+#짝수 구하기
+#for문 별찍기, 역으로 찍기
+#while문으로 별찍기
+#리스트를 이용해서 최대값 찾기
+
+"""
+"""
+a = int(input("input num:"))
+if a % 2 == 0:
+    print("짝수")
+else:
+    print("홀수")
+"""
+"""
+for i in range(1, 6):
+    print("{}".format('*' * i))
+for j in range(5, -1, -1):
+    print("{}".format('*' * j))
+"""
+"""
+i = 1
+while i < 6:
+    print("{}".format('*' * i))
+    i += 1
+"""
+"""
+a = [1, 6, 2, 8, 3, 7]
+big = 0
+for i in range(len(a)):
+    if a[big] < a[i]:
+        big = i
+print(big, a[big])
+"""
+"""
+import random
+def make_list(a):
+    for i in range(10):
+        a.append(random.randrange(1, 200))
+    return a
+
+def action_find_max_value(a):
+    b = a[0]
+    for i in range(len(a)):
+        if a[i] > b:
+            b = a[i]
+    return b
+
+def output_value(b):
+    print("Max value {}".format(b))
+
+a = []
+not_sort_list = make_list(a)
+max_value = action_find_max_value(not_sort_list)
+output_value(max_value)
+"""
+"""
+import random
+a = []
+
+for i in range(10):
+    a.append(random.randrange(1,100))
+print(a)
+
+for i in range(1,len(a)):
+    for j in range(i,0,-1):
+        if a[j-1] > a[j]:
+            a[j], a[j-1] = a[j-1], a[j]
+print(a)
+"""
+"""
+import random
+def make_list(a):
+    for i in range(10):
+        a.append(random.randrange(1, 100))
+    return a
+
+def insertsort(a):
+    for i in range(1, len(a)):
+        for j in range(i, 0, -1):
+            if a[j - 1] > a[j]:
+                a[j], a[j - 1] = a[j - 1], a[j]
+
+def output_list(b):
+    print("{}".format(b))
+
+a = []
+make_list(a)
+output_list(a)
+insertsort(a)
+output_list(a)
+"""
 #pygame 설치
 import pygame
 
 pygame.init()#게임을 초기화 해주는 작업
-
-def car(carImg, x, y):
-    gameDisplay.blit(carImg, (x, y)) #이미지를 그려주는 역할 x, y좌표
 
 display_width = 800 #display 너비선언
 display_height = 800 #display 높이선언
@@ -1441,12 +1534,29 @@ carImg = pygame.image.load("racecar.png") #자동차 이미지 경로
 car_height = 148
 car_width = 79
 
+def car(carImg, x, y):
+    gameDisplay.blit(carImg, (x, y)) #이미지를 그려주는 역할 x, y좌표
+
+def text_object(text, font): #폰트를 render(그리는)하는 역할
+    textSurface = font.render(text, True, black)
+    return textSurface, textSurface.get_rect()
+
+def message_display(text):
+    largeText = pygame.font.Font('freesansbold.ttf', 115)#폰트 정해주기
+    TextSurf, TextRect = text_object(text, largeText)
+    TextRect.center = ((display_width/2),(display_height/2)) #중앙에 위치
+    gameDisplay.blit(TextSurf, TextRect) #화면에 그려주기
+
+    pygame.display.update()
+
+def crash():
+    message_display('You Crashed')
+
 def game_loop():
     x = (display_width * 0.45)
     y = (display_height * 0.8)
     x_change = 0
     y_change = 0
-    a = 0
     crashed = False
     while not crashed:
         for event in pygame.event.get():
@@ -1454,17 +1564,13 @@ def game_loop():
                 crashed = True
             if event.type == pygame.KEYDOWN: #키를 눌렀을 때
                 if event.key == pygame.K_LEFT:
-                    x_change = -5 - a
-                    a += 3
+                    x_change = -5
                 elif event.key == pygame.K_RIGHT:
-                    x_change = 5 + a
-                    a += 3
+                    x_change = 5
                 elif event.key == pygame.K_UP:
-                    y_change = -5 - a
-                    a += 3
+                    y_change = -5
                 elif event.key == pygame.K_DOWN:
-                    y_change = 5 + a
-                    a += 3
+                    y_change = 5
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT or event.key == pygame.K_DOWN or event.key == pygame.K_UP:
                     x_change = 0
@@ -1476,11 +1582,11 @@ def game_loop():
 
         if (x > display_width - car_width or x < 0) or (y > display_height - car_height or y < 0):
             crashed = True
+            crash()
 
         pygame.display.update() #이미지 업데이트
         clock.tick(60)
 
 game_loop()
 pygame.quit()
-
-#가속도
+quit()
